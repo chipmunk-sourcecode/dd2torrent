@@ -1,0 +1,31 @@
+name: Create torrent
+on:
+  push:
+    branches:
+      - master
+      
+env:
+  name: "Firefox Setup 84.0"
+  comment: "Firefox Setup 84.0"
+  url: "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-latest-ssl/en-US/win64/3fdd1318dfa06611263ee86c0c74dcd76fde4cf6763ea411e758b97a0578dee6/Firefox%20Setup%2084.0.exe"
+  file_name: "Firefox Setup 84.0.exe"
+  piece_size: 19 # Check the README.md for recommended piece size
+      
+jobs:
+  create:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install mktorrent
+        run: sudo apt-get install mktorrent
+        
+      - name: Download file
+        run: wget -nv -O "$file_name" "$url"
+        
+      - name: Create torrent using mktorrent
+        run: mktorrent -c "$comment" -l $piece_size -o "${name}.torrent" -w "$url" "$file_name"
+        
+      - name: Upload torrent file
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.name }}
+          path: ${{ env.name }}.torrent
