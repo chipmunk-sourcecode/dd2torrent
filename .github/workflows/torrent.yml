@@ -5,11 +5,11 @@ on:
       - master
       
 env:
-  name: "iPhone XR Restore ipsw"
-  comment: "iOS 14.3 ipsw for XR restore"
-  url: "http://updates-http.cdn-apple.com/2020WinterFCS/fullrestores/001-87267/C892DBD9-83E0-4538-95A8-5E9E45C4F095/iPhone11,8,iPhone12,1_14.3_18C66_Restore.ipsw"
-  file_name: "iPhone11,8,iPhone12,1_14.3_18C66_Restore.ipsw"
-  piece_size: 22 # Check the README.md for recommended piece size
+  name: "Android Studio and SDK Tools"
+  comment: "Android Studio for Windows"
+  url: "https://redirector.gvt1.com/edgedl/android/studio/install/4.1.2.0/android-studio-ide-201.7042882-windows.exe"
+  file_name: "android-studio-ide-201.7042882-windows.exe"
+  piece_size: 19 # Check the README.md for recommended piece size
       
 jobs:
   create:
